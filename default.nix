@@ -26,7 +26,7 @@
 
     colorschemes.tokyonight = {
       enable = true;
-      settings.style = "night";
+      settings.style = "storm";
     };
 
     plugins = {
@@ -79,20 +79,49 @@
           position = "left";
         };
       };
-      }; 
+      };
+      toggleterm = {
+        enable = true;
+        settings = {
+          direction = "float";
+          float_opts = {
+          border = "curved";
+          width = 120;
+          height = 30;
+        };
+          open_mapping = "[[<C-\\>]]";
+        };
+      };
 
       telescope = {
         enable = true;
         extensions = {
-          fzf-native.enable = true;
-        };
-        keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fg" = "live_grep";
-          "<leader>fb" = "buffers";
-          "<leader>fh" = "help_tags";
-        };
-      };
+         fzf-native.enable = true;
+  };
+  keymaps = {
+    "<leader>ff" = "find_files";
+    "<leader>fg" = "live_grep";
+    "<leader>fb" = "buffers";
+    "<leader>fh" = "help_tags";
+    "<leader>/" = {
+            action = "current_buffer_fuzzy_find";
+            options.desc = "Search in current buffer";
+          };
+  };
+  settings = {
+    defaults = {
+      vimgrep_arguments = [
+        "rg"
+        "--color=never"
+        "--no-heading"
+        "--with-filename"
+        "--line-number"
+        "--column"
+        "--smart-case"
+      ];
+    };
+  };
+};
 
       gitsigns = {
         enable = true;
@@ -107,7 +136,7 @@
 
       which-key = {
         enable = true;
-        settings.delay = 300;
+        settings.delay = 100;
       };
 
       trouble.enable = true;
@@ -185,7 +214,7 @@
     extraConfigLua = ''
       local alpha = require('alpha')
       local dashboard = require('alpha.themes.dashboard')
-      
+           
       dashboard.section.header.val = {
         "                                                     ",
         "  ███████╗███████╗██╗     ██████╗  █████╗ ██╗   ██╗██╗███╗   ███╗ ",
@@ -198,15 +227,36 @@
       }
       
       alpha.setup(dashboard.opts)
-    '';
+
+       local Terminal = require('toggleterm.terminal').Terminal
+  local lazygit = Terminal:new({
+    cmd = "lazygit",
+    direction = "float",
+    hidden = true,
+    float_opts = {
+      border = "curved",
+    },
+    on_open = function(term)
+      vim.cmd("startinsert!")
+    end,
+  })
+
+  function _lazygit_toggle()
+    lazygit:toggle()
+  end
+
+  vim.keymap.set("n", "<leader>lg", _lazygit_toggle, { desc = "Lazygit" })
+'';
+    
 
     extraPackages = with pkgs; [
       stylua
-      nixfmt-classic
+      nixfmt-rfc-style
       lua-language-server
       nixd
       ripgrep
       fd
+      lazygit
     ];
 
     keymaps = [
