@@ -6,15 +6,14 @@
 
 > yes, i know this looks unprofessional, i couldn't care less.
 
----
+<br>
 
 ## why does this exist?
 
 because i wanted harpoon, oil, and everything declared in nix. 
 that's it. that's the pitch.
 
-
----
+<br>
 
 ## what makes this different?
 
@@ -25,30 +24,28 @@ probably nothing! but it's:
 - ✅ honest about what it is
 
 
----
+<br>
 
 
 ## showcase
 
----
-
+<br>
 
 ### Telescope + Fuzzy Finding
 
 ![Telescope](screenshots/bufferfuzzy.png)
 
----
+<br>
 
 ### Harpoon Quick Menu
 ![Harpoon](screenshots/harpoon.png)
 
----
+<br>
 
 ### Oil.nvim
 ![Oil](screenshots/oil.png)
 
-
----
+<br>
 
 ## installation
 
