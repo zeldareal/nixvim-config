@@ -1,4 +1,4 @@
-# yet another nvim config
+# yet another weird neovim
 
 ![Hero shot](screenshots/herovim.png)
 
