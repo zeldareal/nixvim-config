@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # yet another weird neovim
 
 ![Hero shot](screenshots/herovim.png)
@@ -62,3 +63,6 @@ probably nothing! but it's:
 <br>
 
 
+=======
+My personal /etc/nixos folder. That's really 'bout it
+>>>>>>> a31b8585bbd062f58bd1fa4c5963ced25279afb2
